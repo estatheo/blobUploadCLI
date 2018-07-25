@@ -16,7 +16,7 @@ namespace blob_image_uploader
             var containerReference = blobClient.GetContainerReference(reference);
             var blobReference = containerReference.GetBlockBlobReference(file.Split('\\').Last());
             blobReference.Properties.ContentType = "image/jpeg";
-            using (var fileStream = System.IO.File.OpenRead(file))
+            using (var fileStream = File.OpenRead(file))
             {
                 await blobReference.UploadFromStreamAsync(fileStream);
             }
